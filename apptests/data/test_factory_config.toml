@@ -1,0 +1,13 @@
+#*************************************************
+# To test IConfig (3/15/24)
+# See: appconfignames.py for filling this file
+#*************************************************
+
+# This will  instantiate the class
+[testclass]
+classname="apptests.test_factory.TestClass"
+
+# This will return "Hello World to the caller"
+[request.readdata]
+classname="apptests.test_factory.HelloWorldReader"
+text="Hello world"
