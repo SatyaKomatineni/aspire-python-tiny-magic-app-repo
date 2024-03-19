@@ -34,10 +34,11 @@ A tiny framework for applications in python. Based on its java counter part. Abs
 
 # Done 3/19/24
 1. Write code
-2. Basic Test battery
-3. Move it into a dedicated repo
+2. Write and pass Basic Test battery
+3. Create dedicated repo
 
 # Backlog
+1. Move code into the dedicated repo
 1. Reorg the directories correctly. They are not the most optimal at the moment
 2. Strengthen test batteries
 3. Use it in an ai langchain project with RAG and Agents
