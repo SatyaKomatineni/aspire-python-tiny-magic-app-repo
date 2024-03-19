@@ -6,6 +6,14 @@ A tiny framework for applications in python. Based on its java counter part. Abs
 2. Give equal weightage to declarative and procedural side of programming
 3. Inherent Backward compatibility
 4. **Reduce learning curve and democratize writing applications.** Onboard new programmers easily using pre-built components. 
+5. Components
+
+# Technical Bells
+6. Declarative execution pipelines
+6. Expression languages
+7. Dependency ingection
+8. Unified configuration 
+9. Magic factory
 
 # Suitability
 1. Web applications
