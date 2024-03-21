@@ -9,7 +9,7 @@ Goal:
 4. Starts with a bootstrap app and then loads the real app from config file
 
 """
-from baselib.applicationinterface import IApplication
+from src.aspire_tinyapp.interfaces.applicationinterface import IApplication
 class ApplicationHolder():
     appconfig_filename: str = ""
     application: IApplication | None = None

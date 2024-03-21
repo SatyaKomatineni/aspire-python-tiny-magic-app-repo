@@ -1,5 +1,5 @@
 
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 import os
 import pickle
 from pathlib import Path

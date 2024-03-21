@@ -13,7 +13,7 @@ from flatten_dict import flatten #type:ignore
 * other libs
 *************************************************
 """
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 from baselib import fileutils as fileutils
 
 """

@@ -12,19 +12,19 @@ ApplicationHolder
 AppObjects
 
 """
-from baselib.applicationinterface import IApplication
-from baselib.loginterface import TrivialLog, ICoreLog
-from baselib.configinterface import IConfig
-from baselib.factoryinterface import IFactory
+from src.aspire_tinyapp.interfaces.applicationinterface import IApplication
+from src.aspire_tinyapp.interfaces.loginterface import TrivialLog, ICoreLog
+from src.aspire_tinyapp.interfaces.configinterface import IConfig
+from src.aspire_tinyapp.interfaces.factoryinterface import IFactory
 from baselib.dictionaryconfig import BaseTOMLConfig
 from appimplementations.defaultfactory import DefaultFactory
 from typing import Any, cast
-from baselib.configinterface import IConfig
+from src.aspire_tinyapp.interfaces.configinterface import IConfig
 from appwall.appholder import ApplicationHolder
-from baselib.appconfignames import ApplicationObjectNames
-from baselib import baselog as log
+from src.aspire_tinyapp.interfaces.appconfignames import ApplicationObjectNames
+from src.aspire_tinyapp.baseimpl import baselog as log
 
-from baselib.objectinterfaces import (ISingleton, IInitializableWithArgs)
+from src.aspire_tinyapp.interfaces.objectinterfaces import (ISingleton, IInitializableWithArgs)
 
 class DefaultConfigApplication(IApplication,ISingleton, IInitializableWithArgs):
 

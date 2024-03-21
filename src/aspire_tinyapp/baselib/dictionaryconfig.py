@@ -52,8 +52,8 @@ Create a class DictionaryConfig
 
 from abc import ABC, abstractmethod
 from typing import Any, Dict
-from baselib.objectinterfaces import IInitializableWithArgs
-from baselib.configinterface import IDictionaryConfig
+from src.aspire_tinyapp.interfaces.objectinterfaces import IInitializableWithArgs
+from src.aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
 
 class DictionaryConfig(IInitializableWithArgs, IDictionaryConfig, ABC):
     _dataDictionary: Dict[str, Any]
@@ -80,7 +80,7 @@ class DictionaryConfig(IInitializableWithArgs, IDictionaryConfig, ABC):
 *************************************************
 """
 from baselib import configutils as configutils
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 from typing import cast
 
 class TOMLConfig(DictionaryConfig):

@@ -37,11 +37,11 @@ if I want to specify a class to be instantiated dynamically from a configuration
 *************************************************
 """
 
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 
 import importlib
 from typing import Any, Type
-from baselib.objectinterfaces import ISingleton
+from src.aspire_tinyapp.interfaces.objectinterfaces import ISingleton
 
 def isSingleton(cls: Type[Any]) -> bool:
     return issubclass(cls,ISingleton)

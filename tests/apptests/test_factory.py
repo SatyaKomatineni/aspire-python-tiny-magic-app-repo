@@ -1,7 +1,7 @@
 
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 
-from baselib.objectinterfaces import (
+from src.aspire_tinyapp.interfaces.objectinterfaces import (
     ISingleton, 
     IInitializable, 
     IInitializableWithArgs,
@@ -14,11 +14,11 @@ from baselib.objectinterfaces import (
 *************************************************
 """
 import unittest
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 from appwall.appinitializer import AppInitializer
 from appwall.appobjectsinterface import AppObjects
 from baselib import fileutils as fileutils
-from baselib.configinterface import IDictionaryConfig
+from src.aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
 from typing import Any
 
 def _getConfigFilename() -> str:

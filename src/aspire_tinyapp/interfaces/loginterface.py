@@ -68,7 +68,7 @@ class ICoreLog(ABC):
 *************************************************
 """
 
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 class TrivialLog(ICoreLog):
 
     def log(self, message: str, msgType: str) -> None:

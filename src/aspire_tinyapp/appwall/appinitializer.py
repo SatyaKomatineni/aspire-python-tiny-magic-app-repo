@@ -1,8 +1,8 @@
 
 from appwall.appholder import ApplicationHolder
-from baselib import baselog as log
-from baselib.baseapplication import BaseApplication
-from baselib.appconfignames import ApplicationObjectNames
+from src.aspire_tinyapp.baseimpl import baselog as log
+from src.aspire_tinyapp.baseimpl.baseapplication import BaseApplication
+from src.aspire_tinyapp.interfaces.appconfignames import ApplicationObjectNames
 from appimplementations.realapplication import DirectDefaultApplication
 
 class AppInitializer():

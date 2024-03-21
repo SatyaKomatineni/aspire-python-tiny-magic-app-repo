@@ -6,12 +6,12 @@ Goal:
 1. Easy access to operations on application objects
 2. Uses ApplicationHolder as the store for the app objects
 """
-from baselib.loginterface import ICoreLog
-from baselib.configinterface import IConfig
-from baselib.factoryinterface import IFactory
+from src.aspire_tinyapp.interfaces.loginterface import ICoreLog
+from src.aspire_tinyapp.interfaces.configinterface import IConfig
+from src.aspire_tinyapp.interfaces.factoryinterface import IFactory
 from appwall.appholder import ApplicationHolder
-from baselib import baselog as log
-from baselib.configinterface import IDictionaryConfig
+from src.aspire_tinyapp.baseimpl import baselog as log
+from src.aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
 
 class AppObjects():
     @staticmethod

@@ -13,11 +13,11 @@ Code:
 """
 
 import unittest
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 from appwall.appinitializer import AppInitializer
 from appwall.appobjectsinterface import AppObjects
 from baselib import fileutils as fileutils
-from baselib.configinterface import IDictionaryConfig
+from src.aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
 from datetime import  date
 from datetime import  datetime
 from datetime import  time

@@ -36,9 +36,16 @@ A tiny framework for applications in python. Based on its java counter part. Abs
 1. Write code
 2. Write and pass Basic Test battery
 3. Create dedicated repo
+4. Move code into the dedicated repo
+
+# Currently working on 3/21/24
+1. Reorg the directories correctly. They are not the most optimal at the moment
+
+# Next set and likely date (End of March)
+1. Fix type errors due to reorged directories
+2. Make the tests work after directory shifting
 
 # Backlog
-1. Move code into the dedicated repo
 1. Reorg the directories correctly. They are not the most optimal at the moment
 2. Strengthen test batteries
 3. Use it in an ai langchain project with RAG and Agents

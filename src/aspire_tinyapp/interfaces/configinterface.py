@@ -3,7 +3,7 @@
 * Imports
 *************************************************
 """
-from baselib import baselog as log
+from src.aspire_tinyapp.baseimpl import baselog as log
 from abc import ABC, abstractmethod
 from typing import Any
 
