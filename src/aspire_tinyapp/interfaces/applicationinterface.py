@@ -19,9 +19,9 @@ Create another class
 """
 
 from abc import ABC, abstractmethod
-from src.aspire_tinyapp.interfaces.configinterface import IConfig
-from src.aspire_tinyapp.interfaces.loginterface import ICoreLog
-from src.aspire_tinyapp.interfaces.factoryinterface import IFactory
+from aspire_tinyapp.interfaces.configinterface import IConfig
+from aspire_tinyapp.interfaces.loginterface import ICoreLog
+from aspire_tinyapp.interfaces.factoryinterface import IFactory
 
 class IApplication(ABC):
 

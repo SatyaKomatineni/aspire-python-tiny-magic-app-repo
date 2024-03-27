@@ -13,8 +13,9 @@ from flatten_dict import flatten #type:ignore
 * other libs
 *************************************************
 """
-from src.aspire_tinyapp.baseimpl import baselog as log
-from baselib import fileutils as fileutils
+from aspire_tinyapp.baselib import baselog as log
+from aspire_tinyapp.baselib import fileutils as fileutils
+
 
 """
 Given a toml configuration filename returna  flattened dictionary.

@@ -49,11 +49,25 @@ Logic:
 import threading
 import importlib
 from typing import Any, Dict, Type
-from src.aspire_tinyapp.interfaces.factoryinterface import IFactory
-from appwall.appobjectsinterface import AppObjects
-from src.aspire_tinyapp.interfaces.appconfignames import ConfigFactoryParamNames
-from src.aspire_tinyapp.baseimpl import baselog as log
-from src.aspire_tinyapp.interfaces.objectinterfaces import ISingleton, IInitializable
+
+from aspire_tinyapp.baselib import baselog as log
+
+from aspire_tinyapp.interfaces.factoryinterface import IFactory
+from aspire_tinyapp.interfaces.appconfignames import ConfigFactoryParamNames
+from aspire_tinyapp.interfaces.objectinterfaces import ISingleton, IInitializable
+
+"""
+*************************************************
+* A bit messy, but may work for now
+*************************************************
+"""
+from aspire_tinyapp.appwall.appobjectsinterface import AppObjects
+
+"""
+*************************************************
+* Code
+*************************************************
+"""
 
 from src.aspire_tinyapp.interfaces.objectinterfaces import (
     IInitializable,

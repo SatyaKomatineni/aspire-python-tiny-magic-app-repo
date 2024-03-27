@@ -50,3 +50,5 @@ A tiny framework for applications in python. Based on its java counter part. Abs
 2. Strengthen test batteries
 3. Use it in an ai langchain project with RAG and Agents
 4. Take a swipe at pip install.
+5. Fix individual local tests for each of the files. Or move them to test batteries. Or delete the code if not needed.
+6. Move directory related file utils to start using the config file

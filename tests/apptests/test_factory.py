@@ -1,5 +1,5 @@
 
-from src.aspire_tinyapp.baseimpl import baselog as log
+from aspire_tinyapp.baselib import baselog as log
 
 from src.aspire_tinyapp.interfaces.objectinterfaces import (
     ISingleton, 
@@ -14,11 +14,11 @@ from src.aspire_tinyapp.interfaces.objectinterfaces import (
 *************************************************
 """
 import unittest
-from src.aspire_tinyapp.baseimpl import baselog as log
-from appwall.appinitializer import AppInitializer
-from appwall.appobjectsinterface import AppObjects
-from baselib import fileutils as fileutils
-from src.aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
+from aspire_tinyapp.baselib import baselog as log
+from aspire_tinyapp.appwall.appinitializer import AppInitializer
+from aspire_tinyapp.appwall.appobjectsinterface import AppObjects
+from aspire_tinyapp.baselib import fileutils as fileutils
+from aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
 from typing import Any
 
 def _getConfigFilename() -> str:

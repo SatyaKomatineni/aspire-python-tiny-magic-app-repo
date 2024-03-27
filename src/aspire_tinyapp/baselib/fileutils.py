@@ -1,10 +1,17 @@
 
-from src.aspire_tinyapp.baseimpl import baselog as log
+from aspire_tinyapp.baselib import baselog as log
 import os
 import pickle
 from pathlib import Path
-import baselib
 from typing import Any
+
+"""
+***********************************
+* Experimental
+* Only used for local testing
+***********************************
+"""
+LOCAL_TEST_PROJECT_ROOT_ENV_variable = "ASPIRE_TINYAPP_LOCAL_TEST_PROJECT_ROOT"
 
 """
 ***********************************
@@ -20,9 +27,6 @@ def getDataRoot():
 def getDatasetRoot():
     return os.path.join(getDataRoot(),"datasets")
 
-def getSonnetsRoot():
-    return os.path.join(getDatasetRoot(), "sonnets")
-
 
 def pathjoin(seg1: str, path: str):
     return os.path.join(seg1,path)
@@ -31,12 +35,25 @@ def pathjoin_segments(seg1: str, *pathSegments: str):
     return os.path.join(seg1, *pathSegments)
 
 def getTempDataRoot():
-    return os.path.join(getDataRoot(),"tempdata")
+    return os.path.join(getProjectRoot(),"tempdata")
 
 def _getProjectRoot() -> str:
-    baselibPath = Path(baselib.__file__)
-    parent = baselibPath.parent.parent.resolve()
-    return str(parent)
+    projRoot = getEnvVariable(LOCAL_TEST_PROJECT_ROOT_ENV_variable, "")
+    if log.isValidString(projRoot) and os.path.exists(projRoot):
+        return projRoot
+    errormsg = f"{LOCAL_TEST_PROJECT_ROOT_ENV_variable} is not set in environment"
+    log.info(errormsg)
+    _printProjectRootDirectorySuggestion()
+    raise Exception(errormsg)
+
+def _printProjectRootDirectorySuggestion():
+    directory_structure = """
+/projectroot/
+    /data
+    /datasets
+    /tempdata
+    """
+    log.ph("Suggested directory structure for local testing", directory_structure.strip())
 
 """
 Returns the parent directory where this file is residing
@@ -88,7 +105,11 @@ General utilities
 ***********************************
 """
 def getEnvVariable(name: str, default: str):
-    value = os.environ[name] 
+    try:
+        value = os.environ[name] 
+    except Exception as e:
+        return default
+    
     if log.isEmptyString(value):
         return default
     return value

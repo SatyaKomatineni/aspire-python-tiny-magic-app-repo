@@ -2,6 +2,9 @@
 *************************************************
 * DictionaryConfig
 *************************************************
+Location: interfaces
+An absttact class
+
 Goal:
 1. Implment IConfig
 2. Acts as a base class for all dicionary based config implementations
@@ -52,8 +55,8 @@ Create a class DictionaryConfig
 
 from abc import ABC, abstractmethod
 from typing import Any, Dict
-from src.aspire_tinyapp.interfaces.objectinterfaces import IInitializableWithArgs
-from src.aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
+from aspire_tinyapp.interfaces.objectinterfaces import IInitializableWithArgs
+from aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
 
 class DictionaryConfig(IInitializableWithArgs, IDictionaryConfig, ABC):
     _dataDictionary: Dict[str, Any]
@@ -73,39 +76,3 @@ class DictionaryConfig(IInitializableWithArgs, IDictionaryConfig, ABC):
         
     def getKeyValuesAsDictionary(self) -> dict[str, Any]:
         return self._dataDictionary
-
-"""
-*************************************************
-* TOMLConfig
-*************************************************
-"""
-from baselib import configutils as configutils
-from src.aspire_tinyapp.baseimpl import baselog as log
-from typing import cast
-
-class TOMLConfig(DictionaryConfig):
-    def _getDictionary(self, args: Any = None) -> Dict[str, Any]:
-        """
-        1. validate args
-        2. read config file
-        3. flatten the dictionary
-        4. return the flattened dictionary
-        5. Use the configutils to do most of the work
-        """
-        log.validate_not_null_or_empty(args)
-        log.assertType(args,str,"configuration filename needs to be a string")
-        configfilename: str = cast(str, args)
-        return configutils.getTOML_flattened_dictionary(configfilename)
-
-
-
-"""
-*************************************************
-* Config Classes
-*************************************************
-tbd.
-"""
-class BaseTOMLConfig(TOMLConfig):
-    def __init__(self, fq_config_filename: str):
-        super().initializeWithArgs("",fq_config_filename)
-    

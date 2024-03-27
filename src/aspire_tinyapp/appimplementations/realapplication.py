@@ -8,21 +8,44 @@ Goal:
 3. Gets Log, Config, and Factory from app config file
 
 Related classes:
+
 ApplicationHolder
 AppObjects
 
+Why does it depend on BaseFactory?:
+
+1. Although it can be obtained from the config in a derived fashion,
+2. it is rare that this object needs to be changed
+3. It is a good idea to have a default factory that can be used
+4. Its behavior, nevertheless, is to obtain the 3 dependent objects from the config
+5. That is why it needs the BaseFactory which it gets it from ApplicationHolder
+
 """
-from src.aspire_tinyapp.interfaces.applicationinterface import IApplication
-from src.aspire_tinyapp.interfaces.loginterface import TrivialLog, ICoreLog
-from src.aspire_tinyapp.interfaces.configinterface import IConfig
-from src.aspire_tinyapp.interfaces.factoryinterface import IFactory
-from baselib.dictionaryconfig import BaseTOMLConfig
-from appimplementations.defaultfactory import DefaultFactory
+
+"""
+*************************************************
+* Interfaces
+*************************************************
+"""
+from aspire_tinyapp.interfaces.applicationinterface import IApplication
+from aspire_tinyapp.interfaces.loginterface import ICoreLog
+from aspire_tinyapp.interfaces.configinterface import IConfig
+from aspire_tinyapp.interfaces.factoryinterface import IFactory
+from aspire_tinyapp.interfaces.configinterface import IConfig
+
+"""
+*************************************************
+* Implementations
+*************************************************
+"""
+from aspire_tinyapp.baseimpl.default_base_logs import TrivialLog
+from aspire_tinyapp.baseimpl.base_tomlconfig import BaseTOMLConfig
+from aspire_tinyapp.appimplementations.defaultfactory import DefaultFactory
+from aspire_tinyapp.appwall.appholder import ApplicationHolder
+
 from typing import Any, cast
-from src.aspire_tinyapp.interfaces.configinterface import IConfig
-from appwall.appholder import ApplicationHolder
-from src.aspire_tinyapp.interfaces.appconfignames import ApplicationObjectNames
-from src.aspire_tinyapp.baseimpl import baselog as log
+from aspire_tinyapp.interfaces.appconfignames import ApplicationObjectNames
+from aspire_tinyapp.baselib import baselog as log
 
 from src.aspire_tinyapp.interfaces.objectinterfaces import (ISingleton, IInitializableWithArgs)
 

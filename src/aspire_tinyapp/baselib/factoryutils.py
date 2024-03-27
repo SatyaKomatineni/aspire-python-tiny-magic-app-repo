@@ -37,7 +37,7 @@ if I want to specify a class to be instantiated dynamically from a configuration
 *************************************************
 """
 
-from src.aspire_tinyapp.baseimpl import baselog as log
+from aspire_tinyapp.baselib import baselog as log
 
 import importlib
 from typing import Any, Type

@@ -12,19 +12,19 @@ Goal:
 7. Consider this the ground floor
 
 Related classes:
+
 ApplicationHolder
 AppObjects
 
 """
-from src.aspire_tinyapp.interfaces.applicationinterface import IApplication
-from src.aspire_tinyapp.interfaces.loginterface import TrivialLog, ICoreLog
-from src.aspire_tinyapp.interfaces.configinterface import IConfig
-from src.aspire_tinyapp.interfaces.factoryinterface import IFactory
-from baselib.dictionaryconfig import BaseTOMLConfig
-from appimplementations.defaultfactory import DefaultFactory
+from aspire_tinyapp.interfaces.applicationinterface import IApplication
+from aspire_tinyapp.baseimpl.default_base_logs import TrivialLog, ICoreLog
+from aspire_tinyapp.interfaces.configinterface import IConfig
+from aspire_tinyapp.interfaces.factoryinterface import IFactory
+from aspire_tinyapp.baseimpl.base_tomlconfig import BaseTOMLConfig
+from aspire_tinyapp.appimplementations.defaultfactory import DefaultFactory, AbsFactory
 from typing import Any
 from src.aspire_tinyapp.interfaces.configinterface import IConfig
-from appimplementations.defaultfactory import AbsFactory
 
 class BaseApplication(IApplication):
 
