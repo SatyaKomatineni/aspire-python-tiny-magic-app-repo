@@ -46,6 +46,7 @@ from aspire_tinyapp.appwall.appholder import ApplicationHolder
 from typing import Any, cast
 from aspire_tinyapp.interfaces.appconfignames import ApplicationObjectNames
 from aspire_tinyapp.baselib import baselog as log
+from aspire_tinyapp.appimplementations.dependencyingjection import DependencyInjectionFactory
 
 from src.aspire_tinyapp.interfaces.objectinterfaces import (ISingleton, IInitializableWithArgs)
 
@@ -122,7 +123,8 @@ class DefaultConfigApplication(IApplication,ISingleton, IInitializableWithArgs):
             return fact.getObjectAbsolute(ApplicationObjectNames.FACTORY_OBJ_NAME, None)
         except Exception as e:
             log.logException("Failed to create a factory object", e)
-            return DefaultFactory()
+            #return DefaultFactory()
+            return DependencyInjectionFactory()
 
 
 class DirectDefaultApplication(DefaultConfigApplication):

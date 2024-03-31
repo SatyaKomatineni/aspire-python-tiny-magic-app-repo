@@ -42,6 +42,7 @@ from aspire_tinyapp.baselib import baselog as log
 import importlib
 from typing import Any, Type
 from src.aspire_tinyapp.interfaces.objectinterfaces import ISingleton
+import inspect
 
 def isSingleton(cls: Type[Any]) -> bool:
     return issubclass(cls,ISingleton)
@@ -94,11 +95,40 @@ def create_class_instance_with_default(full_class_name: str, default_object: Any
 """ 
 def _createObjWithInit(cls: Type[Any], args: dict[str,Any]) -> Any:
     return cls(**args)
-
+"""
+*************************************************
+* Creates an object by calling the "init" method
+* Exepects to know the arguments to pass to the init method
+* Useful for loadign data classes from configuration files
+* Can also be used for factory classes where the constructor is virtualized
+*************************************************
+"""
 def _testCreateObjwithInit():
-    cls = load_class("baselib.factoryutils.TestClass")
-    argDict = {"arg1": "hello", "arg2": 5, "additional_org": "additional_stuff", "and more": "stuff"}
+    cls = load_class("aspire_tinyapp.baselib.factoryutils.TestClass")
+
+    # case: with kwargs as well
+    # you cannot pass additional args if the class doesn't have kwargs
+    # additional args can be just key value pairs and not a dictionary necesssarily
+    # The unused params will go as kwargs (i think. tested. that is correct)
+    #argDict = {"arg1": "hello", "arg2": 5, "additional_org": "additional_stuff", "and more": "stuff"}
+
+    # case: without kwargs in the class
+    # it will fail if you pass additional args
+    # only the args that are expected will need to be passed
+    #argDict = {"arg1": "hello", "arg2": 5, "additional_org": "additional_stuff", "and more": "stuff"}
+
+    #case with the default args
+    # default org will override the default value in the class
+    # additional args passed as kwargs
+    # if kwargs are ommitted in the class, passing them will result in an error
+    # 
+    argDict = {"arg1": "hello", "arg2": 5, 
+               "defaultarg" : "default org", 
+               "additional_org": "additional_stuff", 
+               "and more": "stuff"}
+    log.ph1("Reflection instantiation test")
     obj = _createObjWithInit(cls, argDict)
+    log.info("Object field values")
     log.prettyPrintObject(obj)
 
     log.ph1("Direct instantiation test")
@@ -109,19 +139,67 @@ class TestClass():
     arg1: str
     arg2: int
     defaultarg: str
-    def __init__(self, arg1: str, arg2: int, defaultarg: str = "charge", **kwargs: dict[str, Any]):
+    def __init__(self, arg1: str
+                 ,arg2: int, 
+                 defaultarg: str = "charge"
+                 , **kwargs: dict[str, Any]
+                 ):
         self.arg1 = arg1
         self.arg2 = arg2
         self.defaultarg = defaultarg
+        log.info("Additional arguments")
         log.prettyPrintDictionary(kwargs)
 
+"""
+*************************************************
+* A function to tell me the parameters of a python class constructor
+*************************************************
+1. Should return a list of parameters
+2. each parameter should be a tuple of (name, type, default)
+3. Should handle the case where there are no parameters
+4. should return an empty list in that case
+5. I just need to know if the param has a default or not
+6. I don't need "self" as a parameter
+7. I also just need the classtype as a "string" and not the actual class
+"""
+
+class SimpleParam():
+    def __init__(self, name: str, type: str, default: bool):
+        self.name = name
+        self.type = type
+        self.default = default
+
+    def __repr__(self) -> str:
+        return f"Name: {self.name}, Type: {self.type}, Default: {self.default}"
+
+def _getConstructorParams(cls) -> list[SimpleParam]:
+    init_signature = inspect.signature(cls.__init__)
+    params = []
+    for name, param in init_signature.parameters.items():
+        if name == 'self':
+            continue
+        param_type = param.annotation.__name__ if param.annotation is not param.empty else 'No Type Info'
+        has_default = param.default is not param.empty
+        param = SimpleParam(name, param_type, has_default)
+        params.append(param)
+    return params
+
+def _testGetConstructorParams():
+        cls = load_class("aspire_tinyapp.baselib.factoryutils.TestClass")
+        params = _getConstructorParams(cls)
+        log.info("Constructor parameters")
+        log.info(f"{params}")
+
+
+    
 """
 *************************************************
 * Base testing support
 *************************************************
 """
 def test():
-    _testCreateObjwithInit()
+    #_testCreateObjwithInit()
+    _testGetConstructorParams()
 
 def localTest():
     log.ph1("Starting local test")

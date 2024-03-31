@@ -103,7 +103,17 @@ class AbsFactory(IFactory, ISingleton, IInitializable):
             print(f"Exception caught: {e}")  # Simple logging of the exception
             return defaultObject
 
+"""
+*************************************************
+* End: AbsFactory
+*************************************************
+"""
 
+"""
+*************************************************
+* DefaultFactory
+*************************************************
+"""
 # Assuming the preliminary interface definitions from the previous explanation
 
 class DefaultFactory(AbsFactory, ISingleton, IInitializable):
@@ -205,12 +215,35 @@ class DefaultFactory(AbsFactory, ISingleton, IInitializable):
                 if fqcn in self._cache:
                     return self._cache[fqcn]
                 log.info(f"Creating a singleton of type: {fqcn}")
-                instance = class_obj()
+                instance = self._instantiateClass(class_obj, config_root_context, objectargs)
                 instance = DefaultFactory.processSingleOrMultiInstance(instance, config_root_context, objectargs)
                 self._cache[fqcn] = instance
                 return instance
         else:
-            instance = class_obj()
+            instance = self._instantiateClass(class_obj, config_root_context, objectargs)
             return DefaultFactory.processSingleOrMultiInstance(instance, config_root_context, objectargs)
 
+    def _getConfig(self): 
+        return AppObjects.getConfig()
+    
+    """
+    1. If it has no constructor just instantiate it
+    2. The default factory so assumes
+    3. The derived variation can allow for advanced methods like dependency ingejection from configuration
+    """
+    def _instantiateClass(self, cls: Type[Any], config_root_context: str, objectargs: Any) -> Any:
+        return cls()
 
+    """
+    1. Allows for overriding if needed
+    2. The default implementation is to call the contract methods
+    3. Unlikely to be overridden but the option is there
+    """    
+    def _processInstance(self, instance: Any, config_root_context: str, objectargs: Any) -> Any:
+            return DefaultFactory.processSingleOrMultiInstance(instance, config_root_context, objectargs)
+
+"""
+*************************************************
+* End: DefaultFactory
+*************************************************
+"""
