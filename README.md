@@ -23,8 +23,8 @@ A tiny framework for applications in python. Based on its java counter part. Abs
 5. API development
 
 # Background
-1. Based on a Java framework I had for years that proved to be quite invaluable in all the stated goals
-2. Over 20 years old
+1. Based on a Java framework I had for years that proved valuable in all the stated goals
+2. Over 20 years old. Tested.
 
 # Caution
 1. New to python
