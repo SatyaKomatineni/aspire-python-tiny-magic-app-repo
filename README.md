@@ -38,17 +38,22 @@ A tiny framework for applications in python. Based on its java counter part. Abs
 3. Create dedicated repo
 4. Move code into the dedicated repo
 
-# Currently working on 3/21/24
-1. Reorg the directories correctly. They are not the most optimal at the moment
+# Done 4/1/24
+5. Reorg the directories correctly. They are not the most optimal at the moment
+6. Fix type errors due to reorged directories
+7. Make the tests work after directory shifting
 
-# Next set and likely date (End of March)
-1. Fix type errors due to reorged directories
-2. Make the tests work after directory shifting
+# Currently working on /1/24
+1. Dependency injection
+2. Test factories along with dependency injection
+
+# Next set and likely date (Mid April)
+1. Reorganize tests so that they are readable and meaningful
 
 # Backlog
-1. Reorg the directories correctly. They are not the most optimal at the moment
 2. Strengthen test batteries
 3. Use it in an ai langchain project with RAG and Agents
 4. Take a swipe at pip install.
 5. Fix individual local tests for each of the files. Or move them to test batteries. Or delete the code if not needed.
 6. Move directory related file utils to start using the config file
+7. Optimize by classifying logging methods throughout the app

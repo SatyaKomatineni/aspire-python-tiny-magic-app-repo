@@ -84,6 +84,21 @@ class ISingleton():
 
 """
 *************************************************
+* IDI: A nominal interface for Dependency Injection
+*************************************************
+Goal:
+1. To allow facroty to know if the class is a dependency injectable
+
+Note: For now this it is not used. 
+"""
+
+class IDI():
+    @staticmethod
+    def isIDI(classObj: Type[Any]) -> bool:
+        return issubclass(classObj,IDI)
+
+"""
+*************************************************
 * IExecutor
 *************************************************
 """

@@ -153,6 +153,7 @@ class DefaultFactory(AbsFactory, ISingleton, IInitializable):
 
         #get
         obj_instance = self._getObjectGivenClassname(fqcn,identifier,args)
+        log.trace(f"Returning object of type: {fqcn}")
         return obj_instance
 
     """
@@ -216,12 +217,13 @@ class DefaultFactory(AbsFactory, ISingleton, IInitializable):
                     return self._cache[fqcn]
                 log.info(f"Creating a singleton of type: {fqcn}")
                 instance = self._instantiateClass(class_obj, config_root_context, objectargs)
-                instance = DefaultFactory.processSingleOrMultiInstance(instance, config_root_context, objectargs)
+                instance = self._processInstance(instance, config_root_context, objectargs)
                 self._cache[fqcn] = instance
                 return instance
         else:
+            log.info(f"Creating a non-singleton object of type: {fqcn}")
             instance = self._instantiateClass(class_obj, config_root_context, objectargs)
-            return DefaultFactory.processSingleOrMultiInstance(instance, config_root_context, objectargs)
+            return self._processInstance(instance, config_root_context, objectargs)
 
     def _getConfig(self): 
         return AppObjects.getConfig()
