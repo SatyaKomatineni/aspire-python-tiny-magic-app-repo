@@ -11,3 +11,18 @@ classname="apptests.test_factory.TestClass"
 [request.readdata]
 classname="apptests.test_factory.HelloWorldReader"
 text="Hello world"
+
+[request.readdata_di]
+classname="apptests.test_factory.HelloWorldReaderDI"
+text="Hello world Data Ingestion"
+
+#*************************************************
+#* Classes for test_factory_classes.py
+#*************************************************
+[testclasses_class1]
+classname="apptests.test_factory_classes.TestSingletonClassNoConstructor"
+
+[testclasses_class2]
+classname="apptests.test_factory_classes.TestSingletonClassWithConstructor"
+param1="param1 value"
+param2="param2 value"

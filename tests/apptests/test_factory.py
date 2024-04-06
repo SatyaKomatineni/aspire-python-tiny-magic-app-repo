@@ -19,6 +19,9 @@ from aspire_tinyapp.appwall.appinitializer import AppInitializer
 from aspire_tinyapp.appwall.appobjectsinterface import AppObjects
 from aspire_tinyapp.baselib import fileutils as fileutils
 from aspire_tinyapp.interfaces.configinterface import IDictionaryConfig
+
+from apptests import test_factory_classes as test_factory_classes
+
 from typing import Any
 
 def _getConfigFilename() -> str:
@@ -55,6 +58,29 @@ class TestConfig(unittest.TestCase):
         fact = AppObjects.getFact()
         reply = fact.getObject("readdata", None)
         log.info(f"Reply from readdata transaction: {reply}")
+
+    def test_Executor_di(self):
+        log.info("Testing DI Executor object")
+        fact = AppObjects.getFact()
+        reply = fact.getObject("readdata_di", None)
+        log.info(f"Reply from readdata DI transaction: {reply}")
+
+    def test_factory_class1(self):
+        log.ph1("Testing factory class1")
+        test_factory_classes._test1()
+        log.info("End testing factory class1")
+
+    def test_factory_class2(self):
+        log.ph1("Testing factory class 2")
+        test_factory_classes._test2()
+        log.info("End testing factory class 2")
+
+"""
+*************************************************
+* End: Harness class
+*************************************************
+"""
+
 """
 *************************************************
 * Test IExecutor
@@ -69,6 +95,14 @@ class HelloWorldReader(IExecutor):
         cfg = AppObjects.getConfig()
         text = cfg.getValue(config_root_context + ".text")
         return text
+
+class HelloWorldReaderDI(IExecutor):
+    def __init__(self, text: str):
+        self.text = text
+
+    def execute(self, config_root_context: str, args: Any) -> Any:
+        return self.text
+
 """
 *************************************************
 * Test IInitializable, Singleton: TestClass
