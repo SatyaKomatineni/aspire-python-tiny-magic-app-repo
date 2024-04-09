@@ -51,6 +51,7 @@ import importlib
 from typing import Any, Dict, Type
 
 from aspire_tinyapp.baselib import baselog as log
+from aspire_tinyapp.baselib import factoryutils as factoryutis
 
 from aspire_tinyapp.interfaces.factoryinterface import IFactory
 from aspire_tinyapp.interfaces.appconfignames import ConfigFactoryParamNames
@@ -69,7 +70,7 @@ from aspire_tinyapp.appwall.appobjectsinterface import AppObjects
 *************************************************
 """
 
-from src.aspire_tinyapp.interfaces.objectinterfaces import (
+from aspire_tinyapp.interfaces.objectinterfaces import (
     IInitializable,
     IInitializableWithArgs,
     ISingleton,

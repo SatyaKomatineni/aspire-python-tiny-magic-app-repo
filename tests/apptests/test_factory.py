@@ -1,7 +1,7 @@
 
 from aspire_tinyapp.baselib import baselog as log
 
-from src.aspire_tinyapp.interfaces.objectinterfaces import (
+from aspire_tinyapp.interfaces.objectinterfaces import (
     ISingleton, 
     IInitializable, 
     IInitializableWithArgs,
@@ -71,10 +71,24 @@ class TestConfig(unittest.TestCase):
         log.info("End testing factory class1")
 
     def test_factory_class2(self):
-        log.ph1("Testing factory class 2")
+        log.ph1("Testing factory class 2: TestSingletonClassWithConstructor")
         test_factory_classes._test2()
         log.info("End testing factory class 2")
 
+    def test_factory_class3(self):
+        log.ph1("Testing factory class 2: TestMIClassWithConstructor")
+        test_factory_classes._test3()
+        log.info("End testing factory class 3")
+
+    def test_factory_class4(self):
+        log.ph1("Testing factory class 4: TestMIClassNoConstructor")
+        test_factory_classes._test4()
+        log.info("End testing factory class 4\n")
+
+    def test_factory_class5(self):
+        log.ph1("Testing factory class 5: TestClassWithInitializer")
+        test_factory_classes._test5()
+        log.info("End testing factory class 5\n")
 """
 *************************************************
 * End: Harness class

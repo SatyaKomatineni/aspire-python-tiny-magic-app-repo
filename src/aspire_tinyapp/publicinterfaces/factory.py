@@ -38,7 +38,7 @@ def _fact() -> IFactory:
 # This won't work because the factory object is not initialized
 # so it has to be a method invocation
 # use _fact() instead
-#global_factory: IFactory  = _getGlobalFactory()
+# global_factory: IFactory  = _getGlobalFactory()
 
 
 """

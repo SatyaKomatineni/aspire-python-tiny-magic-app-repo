@@ -19,11 +19,13 @@ from typing import Any
 *************************************************
 """
 
-def _getGlobalConfig() -> IConfig:
+def _config() -> IConfig:
     return AppObjects.getConfig()
 
-global_config: IConfig  = _getGlobalConfig()
-
+# This won't work because the factory object is not initialized
+# so it has to be a method invocation
+# use _config() instead
+# global_config: IConfig  = _getGlobalConfig()
 
 """
 *************************************************
@@ -32,17 +34,16 @@ global_config: IConfig  = _getGlobalConfig()
 """
 
 def getValueWithDefault(key: str, defaultValue: str) -> str:
-    return global_config.getValueWithDefault(key, defaultValue)
+    return _config().getValueWithDefault(key, defaultValue)
 
 def getValue(key: str) -> str:
-    return global_config.getValue(key)
+    return _config().getValue(key)
 
 def getValueAsObjectWithDefault(key:str, defaultValue: Any) -> Any:
-    return global_config.getValueAsObjectWithDefault(key, defaultValue)
+    return _config().getValueAsObjectWithDefault(key, defaultValue)
 
 def getValueAsObject(key:str) -> Any:
-    return global_config.getValueAsObject(key)
-    pass
+    return _config().getValueAsObject(key)
 
 """
 *************************************************

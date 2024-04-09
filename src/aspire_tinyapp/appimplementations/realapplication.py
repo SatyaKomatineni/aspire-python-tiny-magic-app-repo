@@ -48,7 +48,7 @@ from aspire_tinyapp.interfaces.appconfignames import ApplicationObjectNames
 from aspire_tinyapp.baselib import baselog as log
 from aspire_tinyapp.appimplementations.dependencyingjection import DependencyInjectionFactory
 
-from src.aspire_tinyapp.interfaces.objectinterfaces import (ISingleton, IInitializableWithArgs)
+from aspire_tinyapp.interfaces.objectinterfaces import (ISingleton, IInitializableWithArgs)
 
 class DefaultConfigApplication(IApplication,ISingleton, IInitializableWithArgs):
 

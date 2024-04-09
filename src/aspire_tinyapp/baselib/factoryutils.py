@@ -41,7 +41,7 @@ from aspire_tinyapp.baselib import baselog as log
 
 import importlib
 from typing import Any, Type
-from src.aspire_tinyapp.interfaces.objectinterfaces import ISingleton
+from aspire_tinyapp.interfaces.objectinterfaces import ISingleton
 import inspect
 
 def isSingleton(cls: Type[Any]) -> bool:
@@ -191,7 +191,41 @@ def _testGetConstructorParams():
         log.info(f"{params}")
 
 
-    
+"""
+*************************************************
+* Test singleton detection
+*************************************************
+"""    
+class TestSingletonClass(ISingleton):
+    def __init__(self):
+        self.name = "TestSingletonClass"
+        log.info("TestSingletonClass constructor called")
+
+    def _someMethod(self):
+        log.info("Some method called")
+        pass
+
+def _testSingletonDetection():
+    log.ph1("Testing singleton detection")
+    log.info("TestSingletonClass")
+    cls = load_class("aspire_tinyapp.baselib.factoryutils.TestSingletonClass")
+    # approach 1
+    log.info(f"Is singleton: {isSingleton(cls)}")
+    # approach 2
+    b = ISingleton.isSingleton(cls)
+    log.info(f"Is singleton: {b}")
+
+    log.info("TestClass")
+    cls = load_class("aspire_tinyapp.baselib.factoryutils.TestClass")
+    b = ISingleton.isSingleton(cls)
+    log.info(f"Is singleton: {b}")
+
+    log.info("aspire_tinyapp.baselib.factoryutils.TestSingletonClass")
+    cls = load_class("aspire_tinyapp.baselib.factoryutils.TestSingletonClass")
+    b = ISingleton.isSingleton(cls)
+    log.info(f"Is singleton: {b}")
+
+
 """
 *************************************************
 * Base testing support
@@ -199,7 +233,8 @@ def _testGetConstructorParams():
 """
 def test():
     #_testCreateObjwithInit()
-    _testGetConstructorParams()
+    #_testGetConstructorParams()
+    _testSingletonDetection()
 
 def localTest():
     log.ph1("Starting local test")

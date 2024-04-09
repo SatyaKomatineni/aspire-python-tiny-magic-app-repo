@@ -24,7 +24,7 @@ from aspire_tinyapp.interfaces.factoryinterface import IFactory
 from aspire_tinyapp.baseimpl.base_tomlconfig import BaseTOMLConfig
 from aspire_tinyapp.appimplementations.defaultfactory import DefaultFactory, AbsFactory
 from typing import Any
-from src.aspire_tinyapp.interfaces.configinterface import IConfig
+from aspire_tinyapp.interfaces.configinterface import IConfig
 
 class BaseApplication(IApplication):
 

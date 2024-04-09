@@ -26,3 +26,17 @@ classname="apptests.test_factory_classes.TestSingletonClassNoConstructor"
 classname="apptests.test_factory_classes.TestSingletonClassWithConstructor"
 param1="param1 value"
 param2="param2 value"
+
+[testclasses_class3]
+classname="apptests.test_factory_classes.TestMIClassWithConstructor"
+param1="param1 value"
+param2="param2 value"
+
+[testclasses_class4]
+classname="apptests.test_factory_classes.TestMIClassNoConstructor"
+
+[testclasses_class5]
+classname="apptests.test_factory_classes.TestClassWithInitializer"
+param1="param1 value"
+param2="param2 value"
+
