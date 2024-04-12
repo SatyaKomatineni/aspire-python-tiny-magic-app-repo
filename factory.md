@@ -45,6 +45,18 @@ class TestSingletonClassNoConstructor(ISingleton):
         pass
 ```
 
+Then the above print of the object would have looked
+
+```python
+# Core tracing by the framework would print
+info: Creating a singleton of type: apptests.test_factory_classes.TestSingletonClassNoConstructor
+info: TestSingletonClassNoConstructor constructor called
+trace: Returning object of type: apptests.test_factory_classes.TestSingletonClassNoConstructor
+
+# Pretty print of the object would look
+{'name': 'TestSingletonClass'}
+```
+
 Why is this useful?
 
 Here are some takeaways
@@ -103,11 +115,13 @@ class TestSingletonClassWithConstructor(ISingleton):
 
 Lets see now how to instantiate this class by specifying it in the toml configuration file.
 
+```python
 [testclasses_class2]
 classname="apptests.test_factory_classes.TestSingletonClassWithConstructor"
 param1="param1 value"
 param2="param2 value"
 
+```
 Lets now get/instantiate the object and print its contents, note it is still a singleton class.
 
 ```python
