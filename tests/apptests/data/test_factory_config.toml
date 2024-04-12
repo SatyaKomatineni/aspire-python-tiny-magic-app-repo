@@ -40,3 +40,21 @@ classname="apptests.test_factory_classes.TestClassWithInitializer"
 param1="param1 value"
 param2="param2 value"
 
+[testclasses_class6]
+classname="apptests.test_factory_classes.TestClassSIWithInitializerArgs"
+param1="param1 value"
+param2="param2 value"
+
+[testclasses_class7]
+classname="apptests.test_factory_classes.TestClassMIECWithInitializerArgs"
+param1="param1 value"
+param2="Send back hello world via execute method"
+
+[testclasses_class8]
+classname="apptests.test_factory_classes.TestDataClass"
+param_str="string value"
+param_int_1=5
+param_float=5.6
+param_bool=true
+param_list=[1,2,3]
+param_dict={key1 = "value1", key2 = "value2"}

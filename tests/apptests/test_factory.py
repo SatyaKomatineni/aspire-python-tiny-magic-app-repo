@@ -89,6 +89,21 @@ class TestConfig(unittest.TestCase):
         log.ph1("Testing factory class 5: TestClassWithInitializer")
         test_factory_classes._test5()
         log.info("End testing factory class 5\n")
+
+    def test_factory_class6(self):
+        log.ph1("Testing factory class 6: TestClassSIWithInitializerArgs")
+        test_factory_classes._test6()
+        log.info("End testing factory class 6\n")
+        
+    def test_factory_class7(self):
+        log.ph1("Testing factory class 7: TestClassMIECWithInitializerArgs")
+        test_factory_classes._test7()
+        log.info("End testing factory class 7\n")
+
+    def test_factory_class8(self):
+        log.ph1("Testing factory class 8: TestDataClass")
+        test_factory_classes._test8()
+        log.info("End testing factory class 8\n")
 """
 *************************************************
 * End: Harness class
